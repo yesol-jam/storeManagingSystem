@@ -75,6 +75,6 @@
     - 활동로그파일의 데이터를 로그 테이블에 저장
 
 ---
-
-
+## 🧩 쿼리 조회
+**쿼리 파일 위치**: `src/main/ressources/queryFile/testQuery.sql`
 
