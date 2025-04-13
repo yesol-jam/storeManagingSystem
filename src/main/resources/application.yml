@@ -1,0 +1,26 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: storeManagingSystem
+
+  datasource:
+    url: jdbc:mysql://localhost:13306/bucket
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: bucket
+    password: 1234
+    hikari:
+      maximum-pool-size: 5
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml # mapper XML 파일 경로
+  configuration:
+    map-underscore-to-camel-case: true  # underscore_to_camel_case 설정
+    cache-enabled: true        # MyBatis 캐시 사용 여부
+    lazy-loading-enabled: true # Lazy Loading 사용 여부
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # MyBatis SQL 로그 활성화
+
+aes256:
+  secret:
+    key : qZ8zG7GjkCFzuiAWxwKBlhmPDAXZ0yVtaWesvYBwqSQ=
