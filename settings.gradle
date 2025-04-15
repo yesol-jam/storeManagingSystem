@@ -1,1 +1,6 @@
 rootProject.name = 'storeManagingSystem'
+
+include 'store-managing-core'
+include 'store-managing-common'
+include 'store-managing-api'
+include 'store-managing-batch'

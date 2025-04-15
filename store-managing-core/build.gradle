@@ -1,0 +1,23 @@
+plugins {
+	id 'java-library'
+}
+
+dependencies {
+	implementation project(':store-managing-common')
+	
+	//json
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+	
+	//비밀번호 암호화
+	implementation 'org.springframework.security:spring-security-crypto:6.3.3'
+
+	// 스프링 빈 어노테이션
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// mybatis mapper
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+	// 롬복
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+}

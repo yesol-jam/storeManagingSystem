@@ -1,7 +1,7 @@
 package com.bucket.storeManagingSystem.service;
 
-import com.bucket.storeManagingSystem.component.AESUtils;
 import com.bucket.storeManagingSystem.component.JsonReader;
+import com.bucket.storeManagingSystem.util.AESUtils;
 import com.bucket.storeManagingSystem.repository.dto.*;
 import com.bucket.storeManagingSystem.repository.mapper.BrandMapper;
 import org.springframework.beans.factory.annotation.Autowired;

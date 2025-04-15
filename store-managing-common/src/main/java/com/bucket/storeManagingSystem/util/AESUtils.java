@@ -1,7 +1,4 @@
-package com.bucket.storeManagingSystem.component;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+package com.bucket.storeManagingSystem.util;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;

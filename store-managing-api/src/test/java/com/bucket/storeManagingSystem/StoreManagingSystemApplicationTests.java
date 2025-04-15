@@ -1,9 +1,8 @@
 package com.bucket.storeManagingSystem;
 
-import com.bucket.storeManagingSystem.component.AESUtils;
 import com.bucket.storeManagingSystem.service.ManageService;
+import com.bucket.storeManagingSystem.util.AESUtils;
 import org.junit.jupiter.api.Test;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -116,7 +115,7 @@ class StoreManagingSystemApplicationTests {
 		}
 
 		//user_6의 비밀번호가 user_6_1234가 맞는지 확인
-		String user_6EncryptPassword = "{bcrypt}$2a$10$KTo9Qq66UAZnVwv/3UQ63OpRzCU2tqhCgdySm.c9GWIXRklqcHojW";
+		String user_6EncryptPassword = "{bcrypt}$2a$10$N/W4xI3Tr4ingUA9tV8Vtu8gGHGGceWxOaxGENLwuYrZvvJL1NvZu";
 		String user_6DecryptPassword = "user_6_1234";
 		if(passwordEncoder.matches(user_6DecryptPassword, user_6EncryptPassword)){
 			System.out.println("비밀번호 암호화 테스트 : true");

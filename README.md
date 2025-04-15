@@ -25,7 +25,7 @@
 ---
 
 ## 📊 ER-Diagram
-![erd](src/main/resources/img/erdiagram.png)<br>
+![erd](store-managing-api/src/main/resources/img/erdiagram.png)<br>
 
 ---
 
@@ -46,7 +46,7 @@
         - `phone`, `address`: 양방향 암호화 → **AES-256**
 
 > 🔐 암호화 적용 예시  
-![암호화된 필드](src/main/resources/img/img1.png)
+![암호화된 필드](store-managing-api/src/main/resources/img/img1.png)
 ---
 
 ### ✅ 2-b. 접근 로그 저장
@@ -63,7 +63,7 @@
 - **기능**:
     - 임의의 주문 **1,000건** 생성 후 저장
 > 🔽 아래 도식은 주문 데이터 생성 전체 흐름을 시각적으로 설명합니다.
-![로직흐름](src/main/resources/img/img2.png)
+![로직흐름](store-managing-api/src/main/resources/img/img2.png)
 
 ---
 
