@@ -25,6 +25,7 @@ dependencies {
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+	//mysql
 	implementation 'com.mysql:mysql-connector-j'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
