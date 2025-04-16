@@ -98,6 +98,7 @@
 ![의존성구조](store-managing-api/src/main/resources/img/img3.png)
 
 ---
+
 ## 🧩 Docker 를 이용한 로컬 개발환경 구축
 
 - **개발 환경 :**
@@ -108,6 +109,33 @@
 
 🛠️ Docker 설정 위치
 - **설정 파일:** `docker-compose.yml`
+
+---
+## 🧩 Batch 모듈 추가
+
+- **개요 :**
+  - 멀티 모듈 구조, Tasklet 기반의 배치 처리 방식을 사용하였습니다.
+  - 10만건 데이터가 포함된 sample_user_log.json 파일을 읽어 DB 에 저장하는 프로세스를 구현하였습니다.
+
+### ⚙️ 사전 준비 사항
+
+- **application.yml 작성**
+- **Spring Batch 메타 테이블 생성**
+  - 경로 : 
+`store-managing-batch\src\main\resources\batchTableDDL\batchTableDDL.sql`
+
+### ✅ 배치 구성
+
+- **실행(테스트) 클래스 :** SpringBatchApplicationTest.java
+- **Job 구성 클래스 :** BatchConfig.java
+  - Job Name : `jsonToDbJob`
+  - Step Name : `jsonToDbStep`
+- **Tasklet 클래스 :** JsonToDbBatchTasklet.java <--- 실제 비즈니스 로직이 수행되는 곳
+
+### ✅ 실행결과
+access_log 테이블 비운 후 SpringBatchApplicationTest 의 batchRun() 실행<br>
+**-> 해당 테이블에 데이터가 들어감**
+
 
 
 
