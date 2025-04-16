@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+	//의존성
 	implementation project(':store-managing-common')
 	
 	//json
