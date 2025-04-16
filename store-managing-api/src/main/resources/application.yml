@@ -6,7 +6,10 @@ spring:
     name: storeManagingSystem
 
   datasource:
-    url: jdbc:mysql://localhost:13306/bucket
+    ## 로컬 mysql
+    #url: jdbc:mysql://localhost:13306/bucket
+    #docker mysql
+    url: jdbc:mysql://localhost:13307/bucket?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: bucket
     password: 1234
