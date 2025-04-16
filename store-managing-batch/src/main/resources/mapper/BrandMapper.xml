@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bucket.storeManagingSystem.repository.mapper.BrandMapper">
+
+    <insert id="insertBrand" parameterType="java.util.List" useGeneratedKeys="true" >
+        INSERT INTO brand (BRAND_NAME, DELIVERY_FEE)
+        VALUES
+        <foreach collection="list" item="brand" separator=",">
+            (#{brand.brandName}, #{brand.deliveryFee})
+        </foreach>
+    </insert>
+
+    <select id="getAllBrandIdList" resultType="java.lang.Integer">
+        SELECT BRAND_ID FROM brand
+    </select>
+
+    <insert id="insertItems" parameterType="java.util.List" useGeneratedKeys="true" >
+        INSERT INTO item (BRAND_ID, ITEM_NAME, PRICE)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.brandId},#{item.itemName}, #{item.price})
+        </foreach>
+    </insert>
+
+    <insert id="insertUsers" parameterType="java.util.List" useGeneratedKeys="true" >
+        INSERT INTO user (USER_ID, USER_NAME, PASSWORD, PHONE, ADDRESS, AUTH)
+        VALUES
+        <foreach collection="list" item="user" separator=",">
+            (#{user.userId},#{user.userName}, #{user.password}, #{user.phone}, #{user.address}, #{user.auth})
+        </foreach>
+    </insert>
+
+    <insert id="insertAccessLogs" parameterType="java.util.List" useGeneratedKeys="true" >
+        INSERT INTO access_log (ACCESS_TIMESTAMP, USER_ID, PAGE)
+        VALUES
+        <foreach collection="list" item="accessLog" separator=",">
+            (STR_TO_DATE(#{accessLog.accessTimestamp}, '%Y-%m-%d %H:%i:%s'), #{accessLog.userId}, #{accessLog.page})
+        </foreach>
+    </insert>
+
+    <select id="getAllUserList" resultType="java.lang.String">
+        SELECT USER_ID FROM user
+    </select>
+
+    <insert id="insertOrders" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="orderId" >
+        INSERT INTO `order` (USER_ID, ORDER_DATE, DELIVERY_ADDRESS, ORDER_STATUS)
+        VALUES
+        <foreach collection="list" item="order" separator=",">
+            (#{order.userId}, STR_TO_DATE(#{order.orderDate}, '%Y-%m-%d'), #{order.deliveryAddress}, #{order.orderStatus})
+        </foreach>
+    </insert>
+
+    <select id="getAllItems" resultType="com.bucket.storeManagingSystem.repository.dto.ItemDto">
+        SELECT ITEM_ID, BRAND_ID, ITEM_NAME, PRICE FROM item
+    </select>
+
+    <insert id="insertOrderItems" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="orderItemId" >
+        INSERT INTO order_item (ORDER_ID, ITEM_ID, SIZE, QUANTITY, UNIT_PRICE, TOTAL_PRICE, BRAND_ID)
+        VALUES
+        <foreach collection="list" item="orderItem" separator=",">
+            (#{orderItem.orderId}, #{orderItem.itemId}, #{orderItem.size}, #{orderItem.quantity}, #{orderItem.unitPrice}, #{orderItem.totalPrice}, #{orderItem.brandId})
+        </foreach>
+    </insert>
+
+    <select id="getAllBrandList" resultType="com.bucket.storeManagingSystem.repository.dto.BrandDto">
+        SELECT BRAND_ID, BRAND_NAME, DELIVERY_FEE FROM brand
+    </select>
+
+    <update id="updateOrderList" parameterType="java.util.List">
+        UPDATE `order`
+        SET
+        TOTAL_PRICE = CASE ORDER_ID
+        <foreach collection="list" item="order" index="idx">
+            WHEN #{order.orderId} THEN #{order.totalPrice}
+        </foreach>
+        END,
+        DISCOUNT_AMOUNT = CASE ORDER_ID
+        <foreach collection="list" item="order" index="idx">
+            WHEN #{order.orderId} THEN #{order.discountAmount}
+        </foreach>
+        END,
+        DELIVERY_FEE = CASE ORDER_ID
+        <foreach collection="list" item="order" index="idx">
+            WHEN #{order.orderId} THEN #{order.deliveryFee}
+        </foreach>
+        END,
+        ORDER_TOTAL_PRICE = CASE ORDER_ID
+        <foreach collection="list" item="order" index="idx">
+            WHEN #{order.orderId} THEN #{order.orderTotalPrice}
+        </foreach>
+        END,
+        BRAND_ID = CASE ORDER_ID
+        <foreach collection="list" item="order" index="idx">
+            WHEN #{order.orderId} THEN #{order.brandId}
+        </foreach>
+        END
+        WHERE ORDER_ID IN
+        <foreach collection="list" item="order" separator="," open="(" close=")">
+            #{order.orderId}
+        </foreach>
+    </update>
+
+</mapper>

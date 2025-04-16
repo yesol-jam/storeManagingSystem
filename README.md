@@ -19,7 +19,7 @@
 - **MySQL**: `13306`
 
 **데이터 덤프 파일 위치**
-+ src/main/resources/dumpFile
++ store-managing-api 모듈 내부 src/main/resources/dumpFile
 
 >테이블을 모두 생성 후, 코드스크립트를 순차적으로 수행시 data insert 가 됩니다.<br>
 
@@ -78,7 +78,7 @@
 ---
 
 ## 🧩 쿼리 조회
-**쿼리 파일 위치**: `src/main/ressources/queryFile/testQuery.sql`
+**쿼리 파일 위치**: `store-managing-api 모듈 내부 src/main/ressources/queryFile/testQuery.sql`
 
 ---
 ## 🧩 멀티 모듈 추가
@@ -107,7 +107,7 @@
   - Docker desktop 사용
 
 🛠️ Docker 설정 위치
-- **설정 파일 경로:** `storeManagingSystem/docker-compose.yml`
+- **설정 파일:** `docker-compose.yml`
 
 
 
