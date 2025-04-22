@@ -1,4 +1,4 @@
-# 🧾 버킷플레이스 백엔드 과제
+# 🧾 쇼핑몰 관리 시스템(storeManagingSystem)
 
 
 
